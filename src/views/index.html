@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="shortcut icon" href="/views/logo.ico"/>
+  <meta charset="utf-8"/>
+  <%- include ('partials/home/head.html') %><!--Uso del motor de plantilla ejs para sustituir el codigo de ese archivo en esta linea-->
+  <title><%= title %></title>
+</head>
+<body>
+  <%- include ('partials/home/navigationBar.html') %><!--Uso del motor de plantilla ejs para sustituir el codigo de ese archivo en esta linea-->
+  <% if(estado=='Success'){%>
+    <div class="alert alert-success" role="alert">
+      <h4 class="alert-heading">Ha iniciado sesion</h4>
+    </div>
+    <%}else if(estado=='neutral'){%>
+  <%}else if(estado=='Failed'){%>
+    <div class="alert alert-danger" role="alert">
+      <h4 class="alert-heading">Usuario o contraseña incorrectos</h4>
+    </div>
+    <%}%>
+<div class="container d-flex justify-content-center mt-5">
+  <form method="post" action="/userValidate">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Ususario</label>
+    <input type="text" class="form-control col-12" id="userLog" aria-describedby="userLogHelp" placeholder="Usuario" name="user">
+    <small id="emailHelp" class="form-text text-muted">El usuario restringira tus permisos.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Contraseña</label>
+    <input type="password" class="form-control col-12" id="userPasswrod" placeholder="Contraseña" name="password">
+  </div>
+  <button type="submit" class="btn btn-primary">Entrar</button>
+</form>
+</div>
+</body>
+</html>

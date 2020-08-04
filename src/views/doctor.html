@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <%- include ('partials/home/head.html') %>
+    <title><%= title %></title>
+  </head>
+  <body>
+    <%- include ('partials/home/navigationBar.html') %>
+    <%- include ('partials/doctor/doctorNavs.html') %>
+    <% if(ruta=="/doctor/add") { %>
+      <%- include ('partials/doctor/doctorAdd.html') %>
+      <% }else if(ruta=="/doctor/delete" || ruta=="/deleteDoctor"){ %>
+        <%- include ('partials/doctor/doctorDelete.html') %>
+        <%}else if(ruta=="/doctor/lookup") { %>
+          <%- include ('partials/doctor/doctorShowDown.html') %>
+          <% }else if(ruta=="/modifyDoctor"){ %>
+            <%- include ('partials/doctor/doctorModify.html') %>
+            <% }else if(ruta=="userModify"){ %>
+              <%- include ('partials/doctor/doctorModifyCard.html') %>
+          <%}else if(ruta=="/doctor") { %>
+    <p class="display-3">Añade, elimina, actualiza y consulta doctores para tu sistema</p>
+    <%}%>
+  </body>
+</html>

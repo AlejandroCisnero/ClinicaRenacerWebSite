@@ -1,0 +1,93 @@
+<div class="card-body">
+  <form class="needs-validation" autocomplete="nope" method="post" name="pacienteAdd" action="/agendCitaUpdate" id="citaForm">
+    <label for="">Paciente</label>
+    <div class="form-row border border-secondary rounded p-3 col-12">
+      <div class="col-md-6" id="userName">
+        <label for="nombrePac">Nombre</label>
+        <input type="text" name="userName" class="form-control col-12" id="nombrePac" placeholder="Ingrese el nombre" autocomplete="nope"  value="<%=sujeto.nombre%>" disabled>
+      </div>
+      <div class="col-md-6" >
+        <label for="exampleInputEmail1">Apellido</label>
+        <input type="text" name="userLastName" class="form-control col-12" id="apellidoPac" placeholder="Ingrese el apellido" autocomplete="nope"  value="<%=sujeto.apellido%>" disabled>
+      </div>
+      <div class="col-md-6 mt-3" >
+        <label for="exampleInputEmail1">Identificacion</label>
+        <input type="text" name="userIde" class="form-control col-12" id="identificacion" placeholder="Numero de identificacion" autocomplete="off"  value="<%=sujeto.identificacion%>" disabled>
+      </div>
+      <div class="container mt-3 col-md-6 h-25">
+        <label for="" >Sexo</label>
+        <div class="form-control bg-transparent pl-5 pr-5 border border-secondary rounded pt-1 pb-1">
+          <input class="form-check-input ml-4" type="radio" value="1" name="userGender" id="sexoM" disabled <%if(sujeto.sexo==true){%><%="checked"%><%}%>>
+          <label class="form-check-label ml-5" for="sexoM">
+            Masculino
+          </label>
+          <div class="form-check offset-md float-right">
+            <input class="form-check-input mr-4" type="radio" value="0"  name="userGender" id="sexoF" disabled <%if(sujeto.sexo==false){%><%="checked"%><%}%>>
+            <label class="form-check-label mr-5" for="sexoF">
+              Femenino
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <label class="mt-3">Doctor</label>
+    <div class="form-row border border-secondary rounded p-3 col-12">
+
+          <%if(sujeto2!=null){%>
+          <div class="row col-12 d-flex justify-content-center">
+            <div class="col-8 mt-4 text-center">
+              <table class="table table-hover">
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Especialidad</th>
+                <th>Accion</th>
+                <%for(var i=0;i<sujeto2.recordset.length; i++){%>
+                  <tr>
+                    <td><%= sujeto2.recordset[i].nombre%></td>
+                    <td><%= sujeto2.recordset[i].apellido%></td>
+                    <td><%= sujeto2.recordset[i].especialidad%></td>
+                    <td class="pr-0"><input type="radio" name="doctorOption" id="<%=sujeto2.recordset[i].id%>" class="form-check-input mr-4" value="Seleccionar" required></td>
+                  </tr>
+                  <%}%>
+              </table>
+            </div>
+          </div>
+          <%}else{}%>
+        </div>
+      </div>
+    <label for="" class="mt-4">Detalles de Cita</label>
+    <div class="form-row border border-secondary rounded p-3 col-12">
+      <div class="col-md-6" id="userName">
+        <label for="telefono">Concepto</label>
+        <input type="text" name="citaConcept" class="form-control col-12" id="telefono" autocomplete="nope" placeholder="<%=sujeto3.concepto%>">
+      </div>
+      <div class="col-md-6" id="userName">
+        <label for="barrio">Hora</label>
+        <input type="time" name="citaHora" class="form-control col-12" id="barrio" placeholder="Ingrese el barrio" autocomplete="nope" required>
+      </div>
+      <div class="col-md-6" id="userName">
+        <label for="barrio">Fecha</label>
+        <input type="date" name="citaFecha" class="form-control col-12" id="barrio" placeholder="Ingrese el barrio" autocomplete="nope" required>
+      </div>
+    </div>
+     <button type="submit" class="btn btn-secondary mt-3 col-md-2 offset-md-5">Enviar</button>
+<script type="text/javascript">
+  $("#citaForm").submit(function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    var cita={
+      userName: $("input[name='userName']").val(),
+      userLastName: $("input[name='userLastName']").val(),
+      citaConcept: $("input[name='citaConcept']").val(),
+      citaFecha: $("input[name='citaFecha']").val(),
+      citaHora : $("input[name='citaHora']").val(),
+      docId: $("input[name='doctorOption']:checked").attr('id'),
+      citaId: <%=sujeto3.id%>
+    };
+    console.log(cita);
+    $.post($(this).attr("action"), cita,function(res){
+      document.write(res);
+    });
+    return false;
+  });
+</script>

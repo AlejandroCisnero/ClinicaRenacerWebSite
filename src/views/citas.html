@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <%- include ('partials/home/head.html') %>
+    <title><%= title %></title>
+  </head>
+  <body>
+    <%- include ('partials/home/navigationBar.html') %>
+    <%- include ('partials/citas/citasNavs.html') %>
+
+    <% if(ruta=="/citas/add") { %>
+      <%- include ('partials/citas/citasAdd.html') %>
+      <% }else if(ruta=="/citas/search"){ %>
+        <%- include ('partials/citas/citasSearchPacient.html') %>
+        <% }else if(ruta=='/citas/lookup'){ %>
+          <%- include ('partials/citas/citasSearchCita.html') %>
+          <% }else if(ruta=='showCites'){ %>
+            <%- include ('partials/citas/citasPacientShow.html') %>
+            <% }else if(ruta=='showPendientCites'){ %>
+              <%- include ('partials/citas/citasPendientShow.html') %>
+              <% }else if(ruta=='/citas/reprogramar'){ %>
+                <%- include ('partials/citas/citasReproSearch.html') %>
+            <% }else if(ruta=='/citas/pendientes'){ %>
+              <%- include ('partials/citas/citasPendientesSearch.html') %>
+              <% }else if(ruta=='showPacientCitesR'){ %>
+                <%- include ('partials/citas/citasForEditShow.html') %>
+                <% }else if(ruta=='/citas/delete'){ %>
+                  <%- include ('partials/citas/citasDeleteSearch.html') %>
+                  <% }else if(ruta=='citasDeleteShow'){ %>
+                    <%- include ('partials/citas/citasDeleteShow.html') %>
+                <% }else if(ruta=='citasForEditCard'){ %>
+                  <%- include ('partials/citas/citasForEditCard.html') %>
+          <% }else if(ruta=="/citas"){ %>
+              <p class="display-3">Añade, elimina, actualiza y consulta las citas para tus pacientes</p>
+          <%}%>
+  </body>
+</html>

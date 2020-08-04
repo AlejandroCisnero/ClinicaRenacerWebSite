@@ -1,0 +1,98 @@
+<% if(estado=='Success'){%>
+  <div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">Doctor añadido satisfactoriamente</h4>
+  </div>
+  <%}else if(estado=='neutral'){%>
+<%}else if(estado=='Failed'){%>
+  <div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">Este doctor ya existe</h4>
+  </div>
+  <%}%>
+
+<div class="card-body">
+  <form class="needs-validation" autocomplete="nope" method="post" name="pacienteAdd" action="/newDoctorModified/<%=userInfo.id%>">
+    <label for="">Informacion General</label>
+    <div class="form-row border border-secondary rounded p-3 col-12">
+      <div class="col-md-6" id="userName">
+        <label for="nombrePac">Nombre</label>
+        <input type="text" name="userName" class="form-control col-12" id="nombrePac" placeholder="<%=userInfo.nombre%>" autocomplete="nope">
+      </div>
+      <div class="col-md-6" id="userName">
+        <label for="exampleInputEmail1">Apellido</label>
+        <input type="text" name="userLastName" class="form-control col-12" id="apellidoPac" placeholder="<%=userInfo.apellido%>" autocomplete="nope" required>
+      </div>
+      <div class="col-md-6 mt-3" id="userName">
+        <label for="exampleInputEmail1">Identificacion</label>
+        <input type="text" name="userIde" class="form-control col-12" id="identificacion" placeholder="<%=userInfo.cedula%>" autocomplete="off" required>
+      </div>
+      <div class="container mt-3 col-md-6 h-25">
+        <label for="" >Sexo</label>
+        <div class="form-control bg-transparent pl-5 pr-5 border border-secondary rounded pt-1 pb-1">
+          <input class="form-check-input ml-4" type="radio" value="1" name="userGender" id="sexoM" required>
+          <label class="form-check-label ml-5" for="sexoM">
+            Masculino
+          </label>
+          <div class="form-check offset-md float-right">
+            <input class="form-check-input mr-4" type="radio" value="0"  name="userGender" id="sexoF" required>
+            <label class="form-check-label mr-5" for="sexoF">
+              Femenino
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mt-3" id="userName">
+        <label for="exampleInputEmail1">Nacimiento</label>
+        <input type="date" name="userBirth" class="form-control col-12" id="fechaNac" placeholder="Fecha de nacimiento" autocomplete="nope" required>
+      </div>
+      <div class="col-md-6 mt-3 d-inline" id="userName">
+        <label for="telefono">Salario</label>
+        <input type="number" name="userSal" class="form-control col-12" id="telefono" placeholder="<%=userInfo.salario%>" autocomplete="nope">
+      </div>
+      <div class="col-md-6 mt-3 d-inline" id="userName">
+        <label for="telefono">Especialidad</label>
+        <input type="text" name="userEspec" class="form-control col-12" id="telefono" placeholder="<%=userInfo.especialidad%>" autocomplete="nope">
+      </div>
+    </div>
+    <label for="" class="mt-4">Informacion de Contacto</label>
+    <div class="form-row border border-secondary rounded p-3 col-12">
+      <div class="col-md-6" id="userName">
+        <label for="telefono">Telefono</label>
+        <input type="tel" name="userTel" class="form-control col-12" id="telefono" placeholder="<%=userInfo.telefono%>" autocomplete="nope">
+      </div>
+      <div class="col-md-6" id="userName">
+        <label for="ciudad">Ciudad</label>
+        <input type="text" name="userCiudad" class="form-control col-12" id="ciudad" placeholder="<%=userInfo.ciudad%>" autocomplete="nope" required>
+      </div>
+      <div class="col-md-6 mt-3" id="userName">
+        <label for="domicilio">Domicilio</label>
+        <input type="text" name="userDomicilio" class="form-control col-12" id="domicilio" placeholder="<%=userInfo.domicilio%>" autocomplete="nope" required>
+      </div>
+    </div>
+     <button type="submit" class="btn btn-secondary mt-3 ml-0">Submit</button>
+  </form>
+</div>
+<script type="text/javascript">
+  function birth(){
+    var inputIde=document.querySelector("input[name='userIde']").addEventListener("change",autocomplete,true);
+  }
+
+  function autocomplete(e){
+    var inputIde=document.querySelector("input[name='userIde']");
+    let inputBirth=document.querySelector("input[name='userBirth']");
+    let birth=inputIde.value;
+    let day=birth.substring(3,5);
+    let mouth=birth.substring(5,7);
+    let year=birth.substring(7,9);
+    birth=year.concat("-");
+    birth=birth.concat(mouth);
+    birth=birth.concat("-");
+    birth=birth.concat(day);
+    if(year>=00 && year<=20){
+      birth=birth.replace(""+year, "20"+year);
+    }else{
+      birth=birth.replace(""+year, "19"+year);
+    }
+    inputBirth.value=birth;
+  }
+  birth();
+</script>

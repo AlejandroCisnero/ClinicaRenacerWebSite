@@ -1,0 +1,38 @@
+  <form class="form-inline my-2 my-lg-0 justify-content-center" method="post" name="pacienteDelete" action="/paciente/showAll">
+    <label for="subject" class="display-4">Buscar Paciente</label>
+    <div class="row col-12 d-flex justify-content-center mt-4">
+      <input name="subject" class="form-control mr-sm-2 col-8" type="search" placeholder="Nombre, identificacion, numero telefonico" aria-label="Search">
+      <button class="btn btn-light btn-outline my-2 my-sm-0 " type="submit">Buscar</button>
+    </div>
+      </form>
+        <%if(sujeto!=null){%>
+        <div class="row col-12 d-flex justify-content-center">
+          <div class="col-8 mt-4 text-center">
+            <table class="table table-hover">
+              <th>Nombre</th>
+              <th>Apellidos</th>
+              <th>Identificacion</th>
+              <th>Sexo</th>
+              <th>Ciudad</th>
+              <th>Telefono</th>
+              <th>Accion</th>
+              <%for(var i=0;i<sujeto.recordset.length; i++){%>
+                <tr>
+                  <td><%= sujeto.recordset[i].nombre%></td>
+                  <td><%= sujeto.recordset[i].apellido%></td>
+                  <td><%= sujeto.recordset[i].identificacion%></td>
+                  <%if(sujeto.recordset[i].sexo==true){%>
+                  <td>Masculino</td>
+                  <%}else if(sujeto.recordset[i].sexo==false){%>
+                    <td>Femenino</td>
+                    <%}%>
+                  <td><%= sujeto.recordset[i].ciudad%></td>
+                  <td><%= sujeto.recordset[i].telefono%></td>
+                  <td class="pr-0"><a href="/pacientDelete/<%=sujeto.recordset[i].idP%>"><button class="btn btn-light btn-outline" type="submit" name="victima"><i class="fas fa-trash-alt"></i></button></a></td>
+                  <td class="pl-0"><a href="/pacientModify/<%=sujeto.recordset[i].idP%>"><button class="btn btn-light btn-outline" type="submit" name="victima"><i class="fas fa-edit"></i></button></a></td>
+                </tr>
+                <%}%>
+            </table>
+          </div>
+        </div>
+        <%}else{}%>

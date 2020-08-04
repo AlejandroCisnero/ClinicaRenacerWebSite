@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <%- include ('partials/home/head.html') %><!--Uso del motor de plantilla ejs para sustituir el codigo de ese archivo en esta linea-->
+    <title><%= title%></title>
+  </head>
+  <body>
+    <%- include ('partials/home/navigationBar.html') %><!--Uso del motor de plantilla ejs para sustituir el codigo de ese archivo en esta linea-->
+    <%- include ('partials/paciente/pacienteNavs.html') %>
+
+    <% if(ruta=="/pacientes/add") { %>
+      <%- include ('partials/paciente/pacienteAdd.html') %>
+        <% }else if(ruta=="/pacientes/delete" || ruta=="/deletePacient"){ %>
+          <%- include ('partials/paciente/pacienteDelete.html') %>
+            <% }else if(ruta=="/modifyPacient"){ %>
+              <%- include ('partials/paciente/pacienteModify.html') %>
+              <% }else if(ruta=="userModify"){ %>
+                <%- include ('partials/paciente/pacienteModifyCard.html') %>
+                <% }else if(ruta=="/pacienteShowDown"){ %>
+                  <%- include ('partials/paciente/pacienteShowDown.html') %>
+                  <% }else if(ruta=="/pacientes"){ %>
+                    <p class="display-3">Añade, elimina, actualiza y consulta pacientes para tu sistema</p>
+                    <%}%>
+  </body>
+</html>

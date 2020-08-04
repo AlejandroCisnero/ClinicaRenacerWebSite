@@ -1,0 +1,25 @@
+
+<%if(sujeto2!=null){%>
+<div class="row col-12 d-flex justify-content-center">
+  <div class="col-12 mt-4 text-center">
+    <table class="table table-hover">
+      <th>Nombres</th>
+      <th>Apellidos</th>
+      <th>Doctor</th>
+      <th>Fecha</th>
+      <th>Hora</th>
+      <th>Concepto</th>
+      <%for(var i=0;i<sujeto2.recordset.length; i++){%>
+        <tr>
+          <td><%= sujeto2.recordset[i].nombrePac%></td>
+          <td><%= sujeto2.recordset[i].apellidoPac%></td>
+          <td><%= sujeto2.recordset[i].nombreDoc%></td>
+          <td><%= moment(sujeto2.recordset[i].fecha).format('YYYY-MM-DD');%></td>
+          <td><%= moment(sujeto2.recordset[i].hora).format('hh:mm');%></td>
+          <td><%= sujeto2.recordset[i].concepto%></td>
+        </tr>
+        <%}%>
+    </table>
+  </div>
+</div>
+<%}else{}%>

@@ -1,0 +1,80 @@
+*{
+  margin: 0%;
+  padding: 0%;
+}
+@font-face {
+    font-family: Ubuntu;
+    src: url("Ubuntu.ttf");
+}
+body, html{
+  height: 100%;
+}
+aside[id="left"]{
+  background-color: #3492eb;
+  width: 300px;
+  height: 100%;
+  float: left;
+}
+#userAvatar {
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  width: 180px;
+  height: 180px;
+  margin-left: 19.5%;
+  margin-top: 15%;
+}
+nav[id=navigationBar]{
+  min-width: 800px;
+  background-color: #34d0eb;
+  height: 45px;
+  width: 100%;
+}
+nav[id=indexNavigationBar]{
+  background-color: #73e3f0;
+  height: 0%;
+  width: 100%;
+  transition-property: : height, background-color;
+  transition-duration: 2s, 1s;
+  transition-delay: 0s, 0.5s;
+
+}
+nav[class="indexNavigationBarShowed"]{
+  height: 75%;
+}
+ul{
+  list-style: none;
+  height: 100%;
+}
+li{
+  cursor: pointer;
+  float: left;
+  display: block;
+  width: 15%;
+  min-width: 120px;
+  height: 100%;
+  background-color: inherit;
+  transition: background-color 1s;
+}
+li:hover{
+  background-color: #3492eb;
+}
+p{
+  margin: 10px;
+  font-size: 20px;
+  text-align: center;
+  font-family: Ubuntu;
+}
+p.indexTextOption{
+  opacity: 0;
+  font-size: 15px;
+  margin-top: 9px;
+  font-family: Ubuntu;
+  transition: opacity 3s;
+}
+li.indexTextBar{
+  width: 10%;
+}
+a{
+  text-decoration-line: none;
+  color: #000000;
+}
